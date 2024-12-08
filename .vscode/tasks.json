@@ -1,0 +1,40 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "create dir",
+            "command": "mkdir -p build",
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "compile",
+            "command": "g++",
+            "dependsOrder": "sequence",
+            "args": [
+                "-g",
+                "-o",
+                "build/main",
+                "src/main.cpp"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "compound task",
+            "dependsOn": ["create dir", "compile"]
+        }
+    ]
+}
